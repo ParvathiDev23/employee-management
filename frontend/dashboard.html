@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Employee Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -24,6 +25,15 @@
     </div>
 
     <div class="card">
+         <input type="text" id="searchInput" placeholder="Search by name..." onkeyup="filterEmployees()">
+
+<p>
+Average Salary: ₹<span id="avgSalary">0</span> |
+Highest Salary: ₹<span id="maxSalary">0</span> |
+Lowest Salary: ₹<span id="minSalary">0</span>
+</p>
+         <input type="text" id="searchInput" placeholder="Search by name">
+<button onclick="searchEmployee()">Search</button>
         <button onclick="loadEmployees()">Load Employees</button>
         <button class="logout" onclick="logout()">Logout</button>
 

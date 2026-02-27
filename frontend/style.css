@@ -1,33 +1,38 @@
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f9;
+    font-family: 'Segoe UI', sans-serif;
+    background: #449342;
     margin: 0;
     padding: 0;
+    color: #333;
 }
 
 .container {
-    width: 80%;
+    width: 85%;
     margin: 40px auto;
 }
 
 h1 {
     text-align: center;
+    color: white;
+    font-family: 'Anton',sans-serif;
+    font-size: 60px
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 .card {
     background: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 input {
-    display: block;
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border-radius: 5px;
+    border-radius: 6px;
     border: 1px solid #ccc;
 }
 
@@ -35,18 +40,19 @@ button {
     padding: 8px 15px;
     margin-right: 5px;
     border: none;
-    border-radius: 5px;
-    background: #4CAF50;
+    border-radius: 6px;
+    background: #667eea;
     color: white;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 button:hover {
-    opacity: 0.9;
+    background: #5563c1;
 }
 
 .logout {
-    background: #f44336;
+    background: #e63946;
 }
 
 ul {
@@ -57,3 +63,6 @@ ul {
 li {
     margin-bottom: 10px;
 }
+    
+   
+ 

@@ -1,3 +1,4 @@
+
 // ==========================
 // 🔹 LOGIN FUNCTION
 // ==========================
@@ -6,7 +7,7 @@ async function login() {
     const password = document.getElementById("password").value;
 
     try {
-        const response = await fetch("http://localhost:3000/api/auth/login", {
+        const response = await fetch("https://employee-management-rr8y.onrender.com/api/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -15,7 +16,7 @@ async function login() {
         });
 
         const data = await response.json();
-
+  
         if (data.token) {
             localStorage.setItem("token", data.token);
             alert("Login Successful");
@@ -37,7 +38,7 @@ async function login() {
 async function loadEmployees() {
     const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:3000/api/employees", {
+    const response = await fetch("https://employee-management-rr8y.onrender.com/api/employees", {
         method: "GET",
         headers: {
             "Authorization": "Bearer " + token
@@ -106,7 +107,7 @@ async function addEmployee() {
     const salary = document.getElementById("salary").value;
 
     try {
-        const response = await fetch("http://localhost:3000/api/employees", {
+        const response = await fetch("https://employee-management-rr8y.onrender.com/api/employees", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -145,7 +146,7 @@ async function deleteEmployee(id) {
     }
 
     try {
-        await fetch(`http://localhost:3000/api/employees/${id}`, {
+        await fetch(`https://employee-management-rr8y.onrender.com/api/employees/${id}`, {
             method: "DELETE",
             headers: {
                 "Authorization": "Bearer " + token
@@ -172,7 +173,7 @@ async function editEmployee(id, oldName, oldDept, oldSalary) {
     const token = localStorage.getItem("token");
 
     try {
-        await fetch(`http://localhost:3000/api/employees/${id}`, {
+        await fetch(`https://employee-management-rr8y.onrender.com/api/employees/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -199,6 +200,35 @@ async function editEmployee(id, oldName, oldDept, oldSalary) {
 // ==========================
 function logout() {
     localStorage.removeItem("token");
-    window.location.href = "login.html";
+    window.location.href = "index.html";
 }
 
+async function searchEmployee() {
+    const searchValue = document.getElementById("searchInput").value.toLowerCase();
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch("https://employee-management-rr8y.onrender.com/api/employees", {
+        method: "GET",
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    });
+
+    const employees = await response.json();
+
+    const filtered = employees.filter(emp =>
+        emp.name.toLowerCase().includes(searchValue)
+    );
+
+    const list = document.getElementById("employeeList");
+    list.innerHTML = "";
+
+    filtered.forEach(emp => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+            ${emp.name} - ${emp.department} - ₹${emp.salary}
+        `;
+        list.appendChild(li);
+    });
+}
