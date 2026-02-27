@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Employee Dashboard</h1>
+
+    <div class="card">
+        <h3>Add Employee</h3>
+
+        <input type="text" id="name" placeholder="Name">
+        <input type="email" id="email" placeholder="Email">
+        <input type="text" id="department" placeholder="Department">
+        <input type="number" id="salary" placeholder="Salary">
+
+        <button onclick="addEmployee()">Add Employee</button>
+    </div>
+
+    <div class="card">
+        <button onclick="loadEmployees()">Load Employees</button>
+        <button class="logout" onclick="logout()">Logout</button>
+
+        <p>Total Employees: <span id="totalEmployees">0</span></p>
+
+        <canvas id="deptChart"></canvas>
+
+        <ul id="employeeList"></ul>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
